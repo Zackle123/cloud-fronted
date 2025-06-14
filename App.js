@@ -7,7 +7,7 @@ function App() {
   const [result, setResult] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/questions")
+    ffetch(`${process.env.REACT_APP_API_URL}/questions`)
       .then(res => res.json())
       .then(setQuestions);
   }, []);
@@ -17,7 +17,7 @@ function App() {
   };
 
   const handleSubmit = () => {
-    fetch("http://localhost:5000/submit", {
+    fetch(`${process.env.REACT_APP_API_URL}/submit`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ answers }),
